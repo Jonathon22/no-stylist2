@@ -21,7 +21,7 @@ Generate user posts that can double as a outfit and not allowing users to post a
 - The ability to boost post to the top of page(stretch goal ) 
 
 ## ERD 
-
+![ERD Picture](erdpic.png)
 
 ## Wireframe
 [Link](https://www.figma.com/file/Xdd1mNlNiRpkBtxCiL6gKR/No-stylist?node-id=0%3A1)
