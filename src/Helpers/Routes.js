@@ -9,7 +9,7 @@ import OutfitsForm from '../views/OutfitsForm';
 import Profile from '../views/Profile';
 import NotFound from '../views/NotFound';
 
-export default function Routes({ user }) {
+export default function Routes({ user, props }) {
   return (
   <Switch>
   <Route exact path='/' component={() => <Home user={user} />} />
@@ -17,7 +17,7 @@ export default function Routes({ user }) {
   <Route exact path='/Profile' component={() => <Profile user={user} />} />
   <Route exact path='/Items' component={() => <Items user={user} />} />
   <Route exact path='/Items-Form' component={() => <ItemsForm user={user} />} />
-  <Route exact path='/Outfits' component={() => <Outfits user={user} />} />
+  <Route exact path='/Outfits' component={() => <Outfits user={user} {...props}/>} />
   <Route exact path='/Outfits-form' component={() => <OutfitsForm user={user} />} />
   <Route component={NotFound} />
   </Switch>

@@ -1,12 +1,12 @@
 import React from 'react';
-import OutfitContainer from '../Components/OutfitContainer';
+import Outfits from './Outfits';
 import Auth from '../Components/Auth';
 
 export default function home({ user }) {
   const loadComponent = () => {
     let component = '';
     if (user) {
-      component = <OutfitContainer />;
+      component = <Outfits />;
     } else {
       component = <Auth />;
     }
