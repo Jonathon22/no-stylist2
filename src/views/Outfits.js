@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import getOutfits from '../Helpers/Data/outfitData';
-import getUid from '../Helpers/Data/authData';
+import { getAllOutfits } from '../Helpers/Data/outfitData';
 import OutfitCard from '../Components/OutfitCard';
 
 class Outfits extends Component {
@@ -13,8 +12,7 @@ class Outfits extends Component {
   }
 
   getOutfit = () => {
-    const currentUserId = getUid();
-    getOutfits(currentUserId).then((resp) => {
+    getAllOutfits().then((resp) => {
       this.setState({
         outfits: resp,
       });
@@ -26,7 +24,10 @@ class Outfits extends Component {
     const renderOutfits = () => (
       outfits.map((outfit) => <OutfitCard key={outfit.firebaseKey} outfit={outfit}/>));
     return (
+      <>
+      <h1>Outfits</h1>
       <div className='d-flex flex-wrap justify-content-center container'>{renderOutfits()}</div>
+      </>
     );
   }
 }

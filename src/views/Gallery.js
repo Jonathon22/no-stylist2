@@ -7,10 +7,9 @@ class Gallery extends Component {
   }
 
   render() {
-    const { items } = this.state;
     return (
       <div className='Gallery'>
-        <Items items={items}/>
+        <Items />
       </div>
     );
   }

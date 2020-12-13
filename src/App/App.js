@@ -5,10 +5,10 @@ import fbConnection from '../Helpers/Data/connection';
 import Routes from '../Helpers/Routes';
 import './App.scss';
 import MyNavbar from '../Components/MyNavbar';
-// import { patchFBOutfitskeys, patchFBItemskeys } from '../Helpers/Data/patchFBKeys';
+import { patchFBItemskeys } from '../Helpers/Data/patchFBKeys';
 
 // patchFBOutfitskeys();
-// patchFBItemskeys();
+patchFBItemskeys();
 fbConnection();
 
 class App extends React.Component {

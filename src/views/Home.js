@@ -15,7 +15,7 @@ export default function home({ user }) {
 
   return (
     <div>
-    <h1>Home</h1>
+    <h1>Welcome TO NO STYList</h1>
     {loadComponent()}
     </div>
   );
