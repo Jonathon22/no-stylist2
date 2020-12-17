@@ -102,25 +102,25 @@ class CreateOutfitForm extends Component {
          </br>
          <label>Accessories</label>
          <br></br>
-        <select value={items.Ref} onChange={this.handleSubmit}>
+        <select value={imageUrl1} onChange={this.handleSubmit}>
         <option placeholder='article of clothing' value={imageUrl1}><li>{itemReturner()}</li></option>
         required
           </select>
 <br></br>
           <label> T-Shirt </label>
-        <select value={this.state.value} onChange={this.handleSubmit}>
+        <select value={imageUrl2} onChange={this.handleSubmit}>
         <option placeholder='article of clothing' value={imageUrl2}>{itemReturner()}</option>
         required
           </select>
 <br></br>
           <label>Pants</label>
-        <select value={this.state.value} onChange={this.handleSubmit}>
+        <select value={imageUrl3} onChange={this.handleSubmit}>
         <option placeholder='article of clothing' value={imageUrl3}>{itemReturner()}</option>
         required
           </select>
 <br></br>
           <label>Shoes</label>
-        <select value={this.state.value} onChange={this.handleSubmit}>
+        <select value={imageUrl4} onChange={this.handleSubmit}>
         <option placeholder='article of clothing' value={imageUrl4}>{itemReturner()}</option>
         required
           </select>
