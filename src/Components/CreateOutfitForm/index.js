@@ -124,7 +124,7 @@ class CreateOutfitForm extends Component {
         <option placeholder='article of clothing' value={imageUrl4}>{itemReturner()}</option>
         required
           </select>
-        <button ref={(btn) => { this.btn = btn; }} className="btn btn-primary m-2">Submit</button>
+        <button onClick={this.handleSubmit} className="btn btn-primary m-2">Submit</button>
         </div>
       </form>
       </>
