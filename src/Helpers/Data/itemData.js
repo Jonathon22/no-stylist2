@@ -24,8 +24,25 @@ const createItem = (object) => new Promise((resolve, reject) => {
     });
 });
 
+const editItem = (object) => new Promise((resolve, reject) => {
+  axios.patch(`${baseUrl}/items/${object.firebaseKey}.json`, object)
+    .then(resolve).catch((error) => reject(error));
+});
+
+const createOutfitItem = (obj) => new Promise((resolve, reject) => {
+  axios
+    .post(`${baseUrl}/outfit-items.json`, obj).then((response) => {
+      axios.patch(`${baseUrl}/outfit-items/${response.data.name}.json`, { firebaseKey: response.data.name })
+        .then((patchResponse) => {
+          resolve(patchResponse);
+        }).catch((error) => reject(error));
+    });
+});
+
 export {
   getEachItem,
   getAllItems,
   createItem,
+  editItem,
+  createOutfitItem,
 };

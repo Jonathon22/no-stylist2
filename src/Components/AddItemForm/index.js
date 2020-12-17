@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import firebase from 'firebase/app';
 import 'firebase/storage';
 import getUser from '../../Helpers/Data/authData';
-import { createItem } from '../../Helpers/Data/itemData';
+import { createItem, editItem } from '../../Helpers/Data/itemData';
 
 class AdditemForm extends Component {
   state = {
@@ -49,6 +49,14 @@ class AdditemForm extends Component {
             success: true,
           });
         });
+    } else {
+      editItem(this.state)
+        .then(() => {
+          this.props.onUpdate?.(this.props.item.firebaseKey);
+          this.setState({
+            success: true,
+          });
+        });
     }
   }
 
@@ -56,7 +64,7 @@ class AdditemForm extends Component {
     const { success } = this.state;
     return (
       <>
-       { success && (<div className="alert alert-danger" role="alert">Item Was created, head to the Gallery to make an outfit !</div>)
+       { success && (<div className="alert alert-success" role="alert">Item Was created, head to the Gallery to make an outfit !</div>)
       }
       <form onSubmit={this.handleSubmit}>
         <h1 className='m-3'>Add Item</h1>

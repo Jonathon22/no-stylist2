@@ -29,10 +29,10 @@ class Outfits extends Component {
       outfits.map((outfit) => <OutfitCard key={outfit.firebaseKey} outfit={outfit}/>));
     return (
       <>
-      <h1> My Outfits</h1>
-      <AppModal className='app-modal' title={'Create Item'} buttonLabel={'Create Item'}>
+      <AppModal className='app-modal' title={'Create Item'} buttonLabel={'Create An Item'}>
         <AdditemForm />
       </AppModal>
+      <h1> My Outfits</h1>
       <div className='d-flex flex-wrap justify-content-center container'>{renderOutfits()}</div>
       </>
     );

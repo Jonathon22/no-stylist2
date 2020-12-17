@@ -22,7 +22,7 @@ getSingleItem = () => {
 render() {
   const { items } = this.state;
   const renderEachItem = () => (
-    items.length && items.map((item) => <ItemCard key={item.firebaseKey} item={item}/>));
+    items.length && items.map((item) => <ItemCard key={item.firebaseKey} item={item} onUpdate={this.getSingleItem}/>));
   return (
     <>
       <div className='d-flex flex-wrap justify-content-center container'>{renderEachItem()}</div>
