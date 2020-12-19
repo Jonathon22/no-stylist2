@@ -11,7 +11,7 @@ class Gallery extends Component {
   render() {
     return (
       <div className='Gallery'>
-        <AppModal className={'app-modal'} title={'Create Outfit'} buttonLabel={'Create Outfit'}>
+        <AppModal color={'success'} className={'app-modal'} title={'Create Outfit'} buttonLabel={'Create Outfit'}>
           <CreateOutfitForm />
         </AppModal>
         <Items />

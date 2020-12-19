@@ -29,7 +29,7 @@ class Outfits extends Component {
       outfits.map((outfit) => <OutfitCard key={outfit.firebaseKey} outfit={outfit}/>));
     return (
       <>
-      <AppModal className='app-modal' title={'Create Item'} buttonLabel={'Create An Item'}>
+      <AppModal className='app-modal' btnColor={'success'} title={'Create Item'} buttonLabel={'Create An Item'}>
         <AdditemForm />
       </AppModal>
       <h1> My Outfits</h1>

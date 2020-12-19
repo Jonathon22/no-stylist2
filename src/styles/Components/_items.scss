@@ -1,0 +1,30 @@
+.item-card {
+  background-color: bisque;
+  color: black;
+  width: 100%;
+  display: inline-block;
+  margin: 20px;
+  border-radius: 10px ;
+  position: relative;
+  text-align: center;
+  box-shadow: -1px 15px 30px -12px black;
+  z-index: 5;
+}
+
+.parent-item {
+ display: inline-flex;
+}
+
+.item-image {
+  width: max-content;
+}
+
+.outfit-card {
+  background-color: mistyrose;
+  color: mistyrose;
+}
+
+.img {
+  background-color: mistyrose;
+  color: mistyrose;
+}

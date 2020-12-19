@@ -26,6 +26,7 @@ class CreateOutfitForm extends Component {
         userid,
         items: response,
       });
+      console.warn(this.itemsResponse());
     });
   }
 
@@ -34,7 +35,7 @@ class CreateOutfitForm extends Component {
       this.setState({ imageUrl: '' });
       const storageRef = firebase.storage().ref();
       const imageRef = storageRef.child(
-        `pinterest/${this.state.userId}/${Date.now()}${e.target.files[0].name}`,
+        `noStylist/${this.state.userId}/${Date.now()}${e.target.files[0].name}`,
       );
 
       imageRef.put(e.target.files[0]).then((snapshot) => {
@@ -49,46 +50,42 @@ class CreateOutfitForm extends Component {
     }
   };
 
-  handleSubmit = (e) => {
-    e.preventDefault();
-    if (this.state.firebaseKey === '') {
-      const newOutfit = {
-        firebaseKey: this.state.firebaseKey,
-        userid: this.state.userid,
-        imageUrl1: this.state.imageUrl1,
-        imageUrl2: this.state.imageUrl2,
-        imageUrl3: this.state.imageUrl3,
-        imageUrl4: this.state.imageUrl4,
-      };
-      createOutfit(newOutfit).then((response) => {
-        const outfitItem = {
-          outfitid: this.itemRef.current.value,
-          itemid1: response.data.firebaseKey,
-          itemid2: response.data.firebaseKey,
-          itemid3: response.data.firebaseKey,
-          itemid4: response.data.firebaseKey,
+    handleSubmit = (e) => {
+      e.preventDefault();
+      if (this.state.firebaseKey === '') {
+        const newOutfit = {
+          firebaseKey: this.state.firebaseKey,
           userid: this.state.userid,
+          imageUrl1: this.state.imageUrl1,
+          imageUrl2: this.state.imageUrl2,
+          imageUrl3: this.state.imageUrl3,
+          imageUrl4: this.state.imageUrl4,
         };
-        createOutfitItem(outfitItem);
-      }).then(() => {
-        this.setState({
-          success: true,
+        createOutfit(newOutfit).then((response) => {
+          const outfitItem = {
+            outfitid: this.itemRef.current.value,
+            itemid: this.state.firebaseKey,
+            userid: this.state.userid,
+          };
+          createOutfitItem(outfitItem);
+        }).then(() => {
+          this.setState({
+            success: true,
+          });
         });
-      });
+      }
     }
-  }
 
-      itemsResponse = () => (
-        getAllItems().then((response) => response)
-      );
+    itemsResponse = () => (
+      getAllItems().then((response) => response)
+    );
 
-      render() {
-        const {
-          success, items, imageUrl1, imageUrl2, imageUrl3, imageUrl4,
-        } = this.state;
-        const itemReturner = () => items.map((item) => item.name);
-        return (
-      <>
+    render() {
+      const {
+        success, items,
+      } = this.state;
+      return (
+          <>
         {success && (
           <div className='alert alert-success' role='alert'>
             Your Outfit was Created
@@ -102,34 +99,46 @@ class CreateOutfitForm extends Component {
          </br>
          <label>Accessories</label>
          <br></br>
-        <select value={imageUrl1} onChange={this.handleSubmit}>
-        <option placeholder='article of clothing' value={imageUrl1}><li>{itemReturner()}</li></option>
-        required
+         <select ref={this.itemRef} onChange={this.handleChange} label='Select A item'className='form-control form-control-lg m-2'>
+            {Object.keys(items).length
+            && items.map((item) => (
+              <option key={item.firebaseKey} value={item.name}>
+                <img src={item.imageUrl} alt='pic'/>{item.name}</option>
+            ))}
           </select>
 <br></br>
           <label> T-Shirt </label>
-        <select value={imageUrl2} onChange={this.handleSubmit}>
-        <option placeholder='article of clothing' value={imageUrl2}>{itemReturner()}</option>
-        required
+          <select ref={this.itemRef} onChange={this.handleChange} label='Select A item'className='form-control form-control-lg m-2'>
+            {Object.keys(items).length
+            && items.map((item) => (
+              <option key={item.firebaseKey} value={item.name}>
+                <img src={item.imageUrl} alt='pic'/>{item.name}</option>
+            ))}
           </select>
 <br></br>
           <label>Pants</label>
-        <select value={imageUrl3} onChange={this.handleSubmit}>
-        <option placeholder='article of clothing' value={imageUrl3}>{itemReturner()}</option>
-        required
+          <select src={this.state.imageUrl3} ref={this.itemRef} onChange={this.handleChange} label='Select A item'className='form-control form-control-lg m-2'>
+            {Object.keys(items).length
+            && items.map((item) => (
+              <option key={item.firebaseKey} value={item.name}>
+                <img src={item.imageUrl} alt='pic'/>{item.name}</option>
+            ))}
           </select>
 <br></br>
           <label>Shoes</label>
-        <select value={imageUrl4} onChange={this.handleSubmit}>
-        <option placeholder='article of clothing' value={imageUrl4}>{itemReturner()}</option>
-        required
+          <select src={this.state.imageUrl4} ref={this.itemRef} onChange={this.handleChange} label='Select A item'className='form-control form-control-lg m-2'>
+            {Object.keys(items).length
+            && items.map((item) => (
+              <option key={item.firebaseKey} value={item.name}>
+                <img src={item.imageUrl} alt='pic'/>{item.name}</option>
+            ))}
           </select>
         <button onClick={this.handleSubmit} className="btn btn-primary m-2">Submit</button>
         </div>
       </form>
       </>
-        );
-      }
+      );
+    }
 }
 
 export default CreateOutfitForm;

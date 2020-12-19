@@ -8,6 +8,7 @@ const AppModal = (props) => {
     buttonLabel,
     className,
     title,
+    btnColor,
   } = props;
 
   const [modal, setModal] = useState(false);
@@ -16,7 +17,7 @@ const AppModal = (props) => {
 
   return (
     <div>
-      <Button className='d-flex flex-wrap justify-content-center container' color="Success" onClick={toggle}>{buttonLabel}</Button>
+      <Button className='d-flex flex-wrap justify-content-center container' color={btnColor} onClick={toggle}>{buttonLabel}</Button>
       <Modal isOpen={modal} toggle={toggle} className={className}>
         <ModalHeader toggle={toggle}>{title}</ModalHeader>
         <ModalBody className='modal-body'>
